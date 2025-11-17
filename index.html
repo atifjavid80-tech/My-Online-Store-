@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Online Store - Secure Payments</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo h1 {
+            color: #333;
+            font-size: 24px;
+        }
+        
+        .product {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .product-img {
+            width: 150px;
+            height: 150px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #666;
+            border: 2px dashed #ccc;
+        }
+        
+        .price {
+            font-size: 28px;
+            font-weight: bold;
+            color: #4CAF50;
+            margin: 10px 0;
+        }
+        
+        .payment-form {
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        input:focus, select:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+        
+        .pay-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .pay-btn:hover {
+            background: linear-gradient(135deg, #45a049, #4CAF50);
+            transform: translateY(-2px);
+        }
+        
+        .payment-options {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            gap: 10px;
+        }
+        
+        .payment-option {
+            text-align: center;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            flex: 1;
+            transition: all 0.3s;
+        }
+        
+        .payment-option.active {
+            border-color: #4CAF50;
+            background: #f0fff0;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>🛒 My Online Store</h1>
+            <p>Secure Online Shopping</p>
+        </div>
+        
+        <div class="product">
+            <div class="product-img">
+                [Your Product Image]
+            </div>
+            <h2>Product Name</h2>
+            <p>High quality product description here</p>
+            <div class="price">Rs 1,500</div>
+        </div>
+        
+        <div class="payment-options">
+            <div class="payment-option active" onclick="selectPayment('card')">
+                💳 Credit Card
+            </div>
+            <div class="payment-option" onclick="selectPayment('jazzcash')">
+                📱 JazzCash
+            </div>
+            <div class="payment-option" onclick="selectPayment('easypaisa')">
+                📲 EasyPaisa
+            </div>
+        </div>
+        
+        <form class="payment-form" id="paymentForm">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" placeholder="your@email.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" placeholder="0300 1234567" required>
+            </div>
+            
+            <div id="cardFields">
+                <div class="form-group">
+                    <label for="card">Card Number:</label>
+                    <input type="text" id="card" placeholder="1234 5678 9012 3456">
+                </div>
+                
+                <div class="form-group">
+                    <label for="expiry">Expiry Date:</label>
+                    <input type="text" id="expiry" placeholder="MM/YY">
+                </div>
+                
+                <div class="form-group">
+                    <label for="cvv">CVV Code:</label>
+                    <input type="text" id="cvv" placeholder="123">
+                </div>
+            </div>
+            
+            <div id="mobileFields" class="hidden">
+                <div class="form-group">
+                    <label for="mobileAccount">Mobile Account Number:</label>
+                    <input type="text" id="mobileAccount" placeholder="03XX XXXXXXX">
+                </div>
+            </div>
+            
+            <button type="button" class="pay-btn" onclick="processPayment()">
+                ✅ Pay Now - Rs 1,500
+            </button>
+        </form>
+        
+        <div class="footer">
+            <p>✔️ 100% Secure Payment | ✔️ Money Back Guarantee</p>
+            <p>📞 Support: 0300-1234567</p>
+        </div>
+    </div>
+
+    <script>
+        function selectPayment(method) {
+            document.querySelectorAll('.payment-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            
+            event.target.classList.add('active');
+            
+            const cardFields = document.getElementById('cardFields');
+            const mobileFields = document.getElementById('mobileFields');
+            
+            if (method === 'card') {
+                cardFields.style.display = 'block';
+                mobileFields.style.display = 'none';
+            } else {
+                cardFields.style.display = 'none';
+                mobileFields.style.display = 'block';
+            }
+        }
+        
+        function processPayment() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            
+            if (!name || !email || !phone) {
+                alert('Please fill in all required information');
+                return;
+            }
+            
+            alert('Thank you! Your payment is being processed.\\nWe will contact you shortly.');
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            selectPayment('card');
+        });
+    </script>
+</body>
+</html>
