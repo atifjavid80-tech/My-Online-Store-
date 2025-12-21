@@ -601,4 +601,115 @@
             </div>
             <div class="modal-body">
                 <iframe id="pdfViewer" class="pdf-viewer" src=""></iframe>
-       
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="margin: 0;">Resort Tour Video</h3>
+                <button class="modal-close" onclick="closeVideoModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="video-player">
+                    <video id="videoPlayer" controls>
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-green-forest-43527-large.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="imageModalTitle" style="margin: 0;">Image Preview</h3>
+                <button class="modal-close" onclick="closeImageModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="image-display">
+                    <img id="fullscreenImage" src="" alt="Fullscreen Image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal Functions
+        function openPdfModal(title, url) {
+            document.getElementById('pdfModalTitle').textContent = title;
+            document.getElementById('pdfViewer').src = url;
+            document.getElementById('pdfModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closePdfModal() {
+            document.getElementById('pdfModal').style.display = 'none';
+            document.getElementById('pdfViewer').src = '';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function openVideoModal() {
+            document.getElementById('videoModal').style.display = 'flex';
+            document.getElementById('videoPlayer').play();
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeVideoModal() {
+            document.getElementById('videoModal').style.display = 'none';
+            document.getElementById('videoPlayer').pause();
+            document.body.style.overflow = 'auto';
+        }
+        
+        function openImageModal(title, url) {
+            document.getElementById('imageModalTitle').textContent = title;
+            document.getElementById('fullscreenImage').src = url;
+            document.getElementById('imageModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = 'none';
+            document.getElementById('fullscreenImage').src = '';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Language Switcher
+        function switchLanguage() {
+            const logo = document.querySelector('.logo');
+            const footerLogo = document.querySelector('.footer-logo');
+            
+            if (logo.innerHTML.includes('SunDrop')) {
+                logo.innerHTML = 'سن ڈراپ <span>ایکو ریزورٹس</span>';
+                footerLogo.textContent = 'سن ڈراپ ایکو ریزورٹس';
+                document.title = 'سن ڈراپ ایکو ریزورٹس';
+            } else {
+                logo.innerHTML = 'SunDrop <span>Eco Resorts</span>';
+                footerLogo.textContent = 'SunDrop Eco Resorts';
+                document.title = 'SunDrop Eco Resorts | Luxury Sustainable Living';
+            }
+        }
+        
+        // Close modals on outside click
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                closePdfModal();
+                closeVideoModal();
+                closeImageModal();
+            }
+        }
+        
+        // Close on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closePdfModal();
+                closeVideoModal();
+                closeImageModal();
+            }
+        });
+    </script>
+</body>
+</html>
