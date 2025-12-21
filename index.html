@@ -4,8 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SunDrop Eco Resorts | Luxury Sustainable Living</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://raw.githubusercontent.com/atifjavid80-tech/EcoResort-Projects/refs/heads/main/favicon.png" type="image/png">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --primary-color: #0F4C75;
@@ -13,6 +21,7 @@
             --accent-color: #BBE1FA;
             --dark-color: #1B262C;
             --light-color: #F8F9FA;
+            --gold-color: #D4AF37;
         }
         
         * {
@@ -23,26 +32,15 @@
         
         body {
             font-family: 'Poppins', sans-serif;
-            background: var(--light-color);
+            background-color: var(--light-color);
             color: var(--dark-color);
             line-height: 1.6;
             padding-top: 80px;
         }
         
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
             color: var(--primary-color);
-        }
-        
-        /* Header */
-        .header {
-            background: white;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
         }
         
         .container {
@@ -51,10 +49,21 @@
             padding: 0 20px;
         }
         
+        /* ========== HEADER ========== */
+        .header {
+            background: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        
         .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 20px 0;
         }
         
         .logo {
@@ -65,45 +74,182 @@
         }
         
         .logo span {
-            color: #D4AF37;
+            color: var(--gold-color);
         }
         
-        /* Hero Section */
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        /* ========== BUTTONS ========== */
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        /* ========== HERO SECTION ========== */
         .hero {
             background: linear-gradient(rgba(15, 76, 117, 0.9), rgba(15, 76, 117, 0.8)),
                         url('https://images.unsplash.com/photo-1516496636080-14fb876e029d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 6rem 0;
+            padding: 120px 0;
             text-align: center;
         }
         
         .hero h1 {
             color: white;
             font-size: 3.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 20px;
         }
         
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            text-decoration: none;
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* ========== FEATURES SECTION ========== */
+        .features {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: var(--light-color);
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+        
+        /* ========== ROOMS SECTION ========== */
+        .rooms {
+            padding: 100px 0;
+            background: #f9f9f9;
+        }
+        
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .room-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .room-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .room-content {
+            padding: 25px;
+        }
+        
+        .room-price {
+            color: var(--gold-color);
+            font-size: 1.5rem;
             font-weight: 600;
-            margin: 10px;
-            cursor: pointer;
+            margin: 15px 0;
         }
         
-        .btn:hover {
-            background: var(--secondary-color);
-        }
-        
-        /* Modal */
+        /* ========== MODALS ========== */
         .modal {
             display: none;
             position: fixed;
@@ -111,25 +257,147 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.95);
             z-index: 9999;
+            align-items: center;
+            justify-content: center;
         }
         
         .modal-content {
             background: white;
-            margin: 5% auto;
-            padding: 20px;
-            width: 90%;
-            max-width: 1000px;
             border-radius: 10px;
+            max-width: 1000px;
+            width: 90%;
+            max-height: 90vh;
+            overflow: hidden;
         }
         
-        /* Footer */
+        .modal-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .pdf-viewer {
+            width: 100%;
+            height: 70vh;
+            border: none;
+        }
+        
+        .video-player {
+            width: 100%;
+            height: 70vh;
+            background: black;
+        }
+        
+        .video-player video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .image-display img {
+            max-width: 100%;
+            max-height: 70vh;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        /* ========== FOOTER ========== */
         .footer {
             background: var(--dark-color);
             color: white;
-            padding: 3rem 0;
+            padding: 80px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links h4 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
             text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+        }
+        
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -139,10 +407,21 @@
         <div class="container">
             <nav class="nav">
                 <a href="#" class="logo">SunDrop <span>Eco Resorts</span></a>
-                <div>
-                    <a href="#home" class="btn">Home</a>
-                    <a href="#rooms" class="btn">Rooms</a>
-                    <a href="#contact" class="btn">Contact</a>
+                
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#features">Features</a>
+                    <a href="#rooms">Rooms</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                
+                <div class="nav-buttons">
+                    <button class="btn btn-outline" onclick="switchLanguage()">
+                        <i class="fas fa-globe"></i> EN/UR
+                    </button>
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-calendar-check"></i> Book Now
+                    </a>
                 </div>
             </nav>
         </div>
@@ -152,105 +431,174 @@
     <section class="hero" id="home">
         <div class="container">
             <h1>Experience Luxury Sustainable Living</h1>
-            <p>Immerse yourself in nature without compromising on comfort.</p>
-            <button class="btn" onclick="openPdf()">
-                <i class="fas fa-file-pdf"></i> View Brochure
-            </button>
-            <button class="btn" onclick="openVideo()">
-                <i class="fas fa-play"></i> Watch Video
-            </button>
+            <p>Immerse yourself in nature without compromising on comfort. Our eco-friendly resort offers the perfect blend of luxury and sustainability.</p>
+            
+            <div class="hero-buttons">
+                <a href="#rooms" class="btn btn-primary">
+                    <i class="fas fa-eye"></i> View Our Rooms
+                </a>
+                
+                <button class="btn btn-outline" onclick="openVideoModal()">
+                    <i class="fas fa-play-circle"></i> Watch Video Tour
+                </button>
+                
+                <button class="btn btn-outline" onclick="openPdfModal('Resort Brochure', 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf')">
+                    <i class="fas fa-file-pdf"></i> View Brochure
+                </button>
+            </div>
         </div>
     </section>
 
-    <!-- Content Sections -->
-    <section class="container" style="padding: 4rem 0;">
-        <h2>Why Choose SunDrop Eco Resorts</h2>
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem;">
-            <div style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                <h3>Sustainable Luxury</h3>
-                <p>Eco-friendly materials and renewable energy sources.</p>
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose SunDrop Eco Resorts</h2>
+                <p>Discover the perfect harmony of luxury and sustainability</p>
             </div>
-            <div style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                <h3>Organic Dining</h3>
-                <p>Farm-to-table dining with organic ingredients.</p>
-                <button class="btn" onclick="openImage()" style="margin-top: 1rem;">
-                    <i class="fas fa-image"></i> View Photos
-                </button>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Sustainable Luxury</h3>
+                    <p>Built with eco-friendly materials and powered by renewable energy sources.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Organic Dining</h3>
+                    <p>Farm-to-table dining with ingredients from our organic garden.</p>
+                    <button class="btn btn-primary" style="margin-top: 15px;" 
+                            onclick="openImageModal('Organic Garden', 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                        <i class="fas fa-expand"></i> View Photos
+                    </button>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Wellness & Spa</h3>
+                    <p>Natural wellness treatments using organic products in our eco-conscious spa.</p>
+                </div>
             </div>
-            <div style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                <h3>Wellness & Spa</h3>
-                <p>Natural wellness treatments with organic products.</p>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section class="rooms" id="rooms">
+        <div class="container">
+            <div class="section-title">
+                <h2>Luxury Rooms & Suites</h2>
+                <p>Experience comfort in our eco-friendly accommodations</p>
+            </div>
+            
+            <div class="rooms-grid">
+                <div class="room-card">
+                    <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Forest View Suite" class="room-img">
+                    <div class="room-content">
+                        <h3>Forest View Suite</h3>
+                        <p>Wake up to breathtaking views of our protected forest reserve.</p>
+                        <div class="room-price">$299 / night</div>
+                        <button class="btn btn-primary" style="width: 100%;"
+                                onclick="openPdfModal('Forest View Suite', 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf')">
+                            <i class="fas fa-file-pdf"></i> View Details PDF
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="room-card">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Lakeside Villa" class="room-img">
+                    <div class="room-content">
+                        <h3>Lakeside Villa</h3>
+                        <p>Private villa with direct lake access and panoramic views.</p>
+                        <div class="room-price">$499 / night</div>
+                        <button class="btn btn-primary" style="width: 100%;"
+                                onclick="openPdfModal('Lakeside Villa', 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf')">
+                            <i class="fas fa-file-pdf"></i> View Details PDF
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="room-card">
+                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Treehouse Retreat" class="room-img">
+                    <div class="room-content">
+                        <h3>Treehouse Retreat</h3>
+                        <p>Unique elevated accommodation nestled among ancient trees.</p>
+                        <div class="room-price">$399 / night</div>
+                        <button class="btn btn-primary" style="width: 100%;"
+                                onclick="openImageModal('Treehouse Interior', 'https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
+                            <i class="fas fa-expand"></i> View Gallery
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" id="contact">
         <div class="container">
-            <p>&copy; 2024 SunDrop Eco Resorts. All rights reserved.</p>
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">SunDrop Eco Resorts</div>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 20px;">
+                        Pioneering sustainable luxury hospitality since 2010.
+                    </p>
+                    <button class="btn btn-outline" onclick="openVideoModal()" 
+                            style="color: white; border-color: white;">
+                        <i class="fas fa-play-circle"></i> Watch Our Story
+                    </button>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#rooms">Rooms</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#" onclick="openPdfModal('Sustainability Report', 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf')">Sustainability Report</a></li>
+                        <li><a href="#" onclick="openPdfModal('Guest Handbook', 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf')">Guest Handbook</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Eco Valley</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@sundrop.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 SunDrop Eco Resorts. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
     <!-- PDF Modal -->
     <div id="pdfModal" class="modal">
         <div class="modal-content">
-            <h2>Resort Brochure</h2>
-            <iframe id="pdfFrame" style="width:100%; height:500px; border:none;"></iframe>
-            <button class="btn" onclick="closeModal()" style="margin-top: 1rem;">Close</button>
-        </div>
-    </div>
-
-    <!-- Video Modal -->
-    <div id="videoModal" class="modal">
-        <div class="modal-content">
-            <h2>Resort Tour</h2>
-            <video id="videoPlayer" controls style="width:100%;">
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-green-forest-43527-large.mp4" type="video/mp4">
-            </video>
-            <button class="btn" onclick="closeModal()" style="margin-top: 1rem;">Close</button>
-        </div>
-    </div>
-
-    <!-- Image Modal -->
-    <div id="imageModal" class="modal">
-        <div class="modal-content">
-            <h2>Photo Gallery</h2>
-            <img id="modalImage" src="" style="width:100%; border-radius: 10px;">
-            <button class="btn" onclick="closeModal()" style="margin-top: 1rem;">Close</button>
-        </div>
-    </div>
-
-    <script>
-        // Modal Functions
-        function openPdf() {
-            document.getElementById('pdfFrame').src = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
-            document.getElementById('pdfModal').style.display = 'block';
-        }
-        
-        function openVideo() {
-            document.getElementById('videoModal').style.display = 'block';
-            document.getElementById('videoPlayer').play();
-        }
-        
-        function openImage() {
-            document.getElementById('modalImage').src = 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
-            document.getElementById('imageModal').style.display = 'block';
-        }
-        
-        function closeModal() {
-            document.getElementById('pdfModal').style.display = 'none';
-            document.getElementById('videoModal').style.display = 'none';
-            document.getElementById('imageModal').style.display = 'none';
-            document.getElementById('pdfFrame').src = '';
-            document.getElementById('videoPlayer').pause();
-        }
-        
-        // Close modal on outside click
-        window.onclick = function(event) {
-            if (event.target.className === 'modal') {
-                closeModal();
-            }
-        }
-    </script>
-</body>
-</html>
+            <div class="modal-header">
+                <h3 id="pdfModalTitle" style="margin: 0;">PDF Document</h3>
+                <button class="modal-close" onclick="closePdfModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <iframe id="pdfViewer" class="pdf-viewer" src=""></iframe>
+       
