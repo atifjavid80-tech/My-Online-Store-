@@ -5,354 +5,387 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Match Making, Models & More</title>
     <style>
+        /* RESET AND BASE */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Times New Roman', serif;
         }
         
         body {
-            background-color: #ffffff;
-            color: #000000;
-            line-height: 1.3;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            line-height: 1.4;
         }
         
-        /* PAGE STYLING - EXACT PDF LAYOUT */
+        /* A4 PAGE STYLING */
         .page {
             width: 210mm;
             height: 297mm;
             background: white;
-            margin: 0 auto 20mm;
-            padding: 15mm 20mm;
+            margin: 10mm auto;
             position: relative;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
-            page-break-after: always;
             overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            page-break-after: always;
         }
         
-        /* PAGE 1 SPECIFIC STYLING */
-        .page-1 {
-            padding-top: 40mm;
+        /* PAGE 1 */
+        .page1-content {
+            padding: 25mm 30mm;
+            height: 100%;
+            position: relative;
         }
         
-        .main-header {
+        .header-section {
             text-align: center;
-            margin-bottom: 25mm;
-            line-height: 1.2;
+            margin-bottom: 30mm;
         }
         
         .main-title {
-            font-size: 28pt;
-            font-weight: bold;
-            letter-spacing: 0.5pt;
-            margin-bottom: 4pt;
-            line-height: 1.1;
+            font-size: 32pt;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            line-height: 1;
+            margin-bottom: 8px;
+            color: #111;
         }
         
-        .subtitle {
-            font-size: 12pt;
+        .tagline {
+            font-size: 13pt;
             font-style: italic;
-            margin-bottom: 6pt;
-            color: #333;
+            color: #666;
+            margin-bottom: 15px;
+            letter-spacing: 0.3px;
         }
         
         .contact-info {
             font-size: 11pt;
-            color: #0066cc;
-            margin-top: 8pt;
+            color: #1a73e8;
         }
         
-        .veronica-title {
-            text-align: center;
-            margin: 25mm 0 15mm;
-        }
-        
-        .veronica-main {
-            font-size: 42pt;
-            font-weight: bold;
-            letter-spacing: -0.5pt;
-            line-height: 0.9;
-        }
-        
-        .veronica-sub {
-            font-size: 14pt;
-            margin-top: 2pt;
-            color: #333;
-        }
-        
-        .application-section {
+        .veronica-section {
             text-align: center;
             margin: 20mm 0 25mm;
         }
         
-        .application-title {
+        .veronica-title {
+            font-size: 72pt;
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 0.85;
+            color: #000;
+            margin-bottom: 5px;
+        }
+        
+        .veronica-sub {
             font-size: 18pt;
-            font-weight: bold;
-            margin-bottom: 8mm;
+            color: #444;
+            letter-spacing: 2px;
+        }
+        
+        .application-box {
+            text-align: center;
+            margin: 0 auto 25mm;
+            max-width: 160mm;
+        }
+        
+        .application-title {
+            font-size: 22pt;
+            font-weight: 700;
             color: #333;
+            margin-bottom: 12mm;
+            letter-spacing: 1px;
         }
         
         .application-text {
-            font-size: 11pt;
-            line-height: 1.4;
-            margin-bottom: 5mm;
-            color: #444;
-            max-width: 150mm;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 12pt;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 10mm;
         }
         
         .stats-container {
             display: flex;
             justify-content: center;
             gap: 25mm;
-            margin: 15mm 0 20mm;
+            margin: 20mm 0 30mm;
         }
         
-        .stat-item {
+        .stat-box {
             text-align: center;
         }
         
         .stat-number {
-            font-size: 28pt;
-            font-weight: bold;
+            font-size: 36pt;
+            font-weight: 800;
             color: #000;
+            line-height: 1;
+            margin-bottom: 5mm;
         }
         
         .stat-label {
-            font-size: 9pt;
-            color: #666;
-            margin-top: 2mm;
+            font-size: 10pt;
+            color: #777;
             text-transform: uppercase;
-            letter-spacing: 0.5pt;
+            letter-spacing: 1px;
         }
         
-        .trusted-brands {
+        .brands-section {
+            position: absolute;
+            bottom: 25mm;
+            left: 30mm;
+            right: 30mm;
             text-align: center;
-            margin-top: 25mm;
         }
         
         .brands-title {
             font-size: 14pt;
-            font-weight: bold;
-            margin-bottom: 8mm;
+            font-weight: 700;
             color: #333;
+            margin-bottom: 10mm;
         }
         
         .brands-logos {
             display: flex;
             justify-content: center;
-            gap: 30mm;
+            gap: 40mm;
         }
         
-        .brand-box {
+        .brand-logo {
             width: 60mm;
-            height: 25mm;
-            border: 1px solid #999;
+            height: 20mm;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            font-size: 14pt;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            font-weight: 700;
             color: #333;
-            background-color: #f8f8f8;
+            font-size: 14pt;
         }
         
-        /* PAGE 2 SPECIFIC STYLING */
-        .nav-container {
+        /* PAGE 2 */
+        .page2-content {
+            padding: 20mm 25mm;
+            height: 100%;
+        }
+        
+        .navigation-bar {
             display: flex;
             justify-content: space-between;
-            font-size: 10pt;
-            font-weight: bold;
+            padding: 5mm 0;
+            border-bottom: 2px solid #000;
             margin-bottom: 15mm;
-            padding-bottom: 3mm;
-            border-bottom: 1px solid #ccc;
+            font-weight: 700;
+            font-size: 11pt;
         }
         
         .nav-item {
             color: #000;
+            text-transform: uppercase;
         }
         
         .what-we-do-title {
-            font-size: 24pt;
-            font-weight: bold;
-            margin-bottom: 12mm;
+            font-size: 28pt;
+            font-weight: 800;
             color: #000;
+            margin-bottom: 15mm;
         }
         
-        .service-item {
+        .service-container {
             margin-bottom: 10mm;
             padding-bottom: 8mm;
-            border-bottom: 0.5px solid #eee;
+            border-bottom: 1px solid #eee;
         }
         
         .service-title {
             font-size: 16pt;
-            font-weight: bold;
+            font-weight: 700;
+            color: #222;
             margin-bottom: 4mm;
-            color: #000;
         }
         
         .service-description {
             font-size: 11pt;
-            line-height: 1.4;
-            color: #333;
+            color: #444;
+            line-height: 1.5;
             text-align: justify;
         }
         
-        .page-2-stats {
-            margin: 20mm 0 15mm;
+        .page2-stats {
+            margin: 20mm 0 25mm;
         }
         
-        /* PAGE 3 - EMPTY */
-        .page-3 {
+        .footer-section {
+            position: absolute;
+            bottom: 15mm;
+            left: 25mm;
+            right: 25mm;
+            padding-top: 8mm;
+            border-top: 1px solid #ccc;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10mm;
+        }
+        
+        .footer-column h3 {
+            font-size: 12pt;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 4mm;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 2mm;
+            font-size: 10pt;
+            color: #555;
+        }
+        
+        /* PAGE 3 - WITH IMAGES */
+        .page3-content {
+            padding: 20mm 25mm;
+            height: 100%;
+            position: relative;
+        }
+        
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8mm;
+            margin-top: 10mm;
+        }
+        
+        .model-card {
+            background: #f8f8f8;
+            border-radius: 2mm;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .model-image {
+            width: 100%;
+            height: 50mm;
+            background-color: #ddd;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #999;
+            font-weight: 500;
         }
         
-        .empty-page-text {
-            color: #ccc;
-            font-size: 14pt;
-            font-style: italic;
+        .model-info {
+            padding: 4mm;
         }
         
-        /* PAGE 4 SPECIFIC STYLING */
-        .page-4-header {
+        .model-name {
+            font-weight: 700;
+            font-size: 12pt;
+            margin-bottom: 1mm;
+        }
+        
+        .model-category {
+            font-size: 10pt;
+            color: #777;
+        }
+        
+        .page-title {
+            font-size: 32pt;
+            font-weight: 900;
             text-align: center;
+            margin-bottom: 15mm;
+            color: #000;
+        }
+        
+        /* PAGE 4 */
+        .page4-content {
+            padding: 25mm 30mm;
+            height: 100%;
+        }
+        
+        .form-title {
+            font-size: 24pt;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 15mm;
+            color: #000;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8mm 15mm;
             margin-bottom: 15mm;
         }
         
-        .page-4-title {
-            font-size: 24pt;
-            font-weight: bold;
-            margin-bottom: 5mm;
-            color: #000;
-        }
-        
-        .page-4-subtitle {
-            font-size: 18pt;
-            font-weight: bold;
-            color: #333;
-        }
-        
-        .form-container {
-            width: 160mm;
-            margin: 0 auto;
-        }
-        
-        .form-row {
-            display: flex;
+        .form-group {
             margin-bottom: 6mm;
-            align-items: center;
         }
         
         .form-label {
-            width: 40mm;
+            display: block;
+            font-weight: 700;
             font-size: 11pt;
-            font-weight: bold;
-            color: #000;
+            margin-bottom: 2mm;
+            color: #333;
         }
         
         .form-input {
-            flex: 1;
-            padding: 2mm;
-            border: 1px solid #999;
+            width: 100%;
+            padding: 3mm;
+            border: 1px solid #bbb;
+            border-radius: 1mm;
             font-size: 11pt;
-            background-color: #fff;
         }
         
-        .form-input::placeholder {
-            color: #999;
-            font-style: italic;
-        }
-        
-        .checkbox-group {
-            margin: 10mm 0 15mm;
+        .checkbox-container {
+            margin: 10mm 0;
         }
         
         .checkbox-item {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             margin-bottom: 4mm;
-            font-size: 10pt;
         }
         
         .checkbox-item input {
-            margin-right: 3mm;
-            margin-top: 1mm;
+            margin-right: 4mm;
         }
         
-        .search-section {
-            margin-top: 20mm;
+        .summary-section {
+            margin-top: 15mm;
         }
         
-        .search-title {
+        .summary-title {
             font-size: 14pt;
-            font-weight: bold;
+            font-weight: 700;
             margin-bottom: 5mm;
-            color: #000;
+            color: #333;
         }
         
         .summary-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 5mm;
             font-size: 10pt;
         }
         
         .summary-table td {
-            border: 1px solid #999;
+            border: 1px solid #ccc;
             padding: 3mm;
             vertical-align: top;
-            width: 25%;
         }
         
         .table-header {
-            font-weight: bold;
-            background-color: #f0f0f0;
-            color: #000;
-        }
-        
-        /* FOOTER FOR PAGE 2 */
-        .footer-section {
-            position: absolute;
-            bottom: 15mm;
-            left: 20mm;
-            right: 20mm;
-            border-top: 1px solid #ccc;
-            padding-top: 5mm;
-        }
-        
-        .footer-columns {
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .footer-column {
-            flex: 1;
-        }
-        
-        .footer-title {
-            font-size: 11pt;
-            font-weight: bold;
-            margin-bottom: 3mm;
-            color: #000;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 2mm;
-        }
-        
-        .footer-links a {
-            color: #333;
-            text-decoration: none;
-            font-size: 9pt;
+            background-color: #f5f5f5;
+            font-weight: 700;
         }
         
         /* PRINT STYLES */
@@ -367,244 +400,347 @@
                 box-shadow: none;
                 margin: 0;
                 page-break-after: always;
-                height: 297mm;
-            }
-            
-            .no-print {
-                display: none;
             }
         }
         
-        /* FOR SCREEN VIEWING */
-        @media screen {
-            body {
-                padding: 10px;
-                background-color: #f0f0f0;
-            }
+        /* IMAGE PLACEHOLDER STYLING */
+        .img-placeholder {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-weight: 500;
+            font-size: 12pt;
+        }
+        
+        .logo-placeholder {
+            background: #1a237e;
+            color: white;
+            font-weight: 800;
+            font-size: 16pt;
+        }
+        
+        .brand-placeholder-1 {
+            background: #000;
+            color: white;
+        }
+        
+        .brand-placeholder-2 {
+            background: #0046be;
+            color: white;
+        }
+        
+        .model-img-1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .model-img-2 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        
+        .model-img-3 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+        
+        .model-img-4 {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+        }
+        
+        .model-img-5 {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+        }
+        
+        .model-img-6 {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #333;
         }
     </style>
 </head>
 <body>
     <!-- PAGE 1 -->
-    <div class="page page-1">
-        <div class="main-header">
-            <div class="main-title">MATCH MAKING, MODELS & MORE,</div>
-            <div class="subtitle">COMPETENTED AS A PETRIFICE FOR ANOTHER DAY</div>
-            <div class="contact-info">maketokas@maketokas.com</div>
-            <div class="contact-info">https://maketokas.com</div>
-        </div>
-        
-        <div class="veronica-title">
-            <div class="veronica-main">VeronicaVee</div>
-            <div class="veronica-sub">com</div>
-        </div>
-        
-        <div class="application-section">
-            <div class="application-title">APPLICATION</div>
-            <div class="application-text">
-                More than models<br>
-                The world's number of different types of events and the time to work is covered with a variety of new experiences.
+    <div class="page">
+        <div class="page1-content">
+            <div class="header-section">
+                <h1 class="main-title">MATCH MAKING, MODELS & MORE,</h1>
+                <div class="tagline">COMPETENTED AS A PETRIFICE FOR ANOTHER DAY</div>
+                <div class="contact-info">maketokas@maketokas.com</div>
+                <div class="contact-info">https://maketokas.com</div>
             </div>
-            <div class="application-text">
-                The world's best talent and passion that lives in
+            
+            <div class="veronica-section">
+                <div class="veronica-title">VeronicaVee</div>
+                <div class="veronica-sub">com</div>
             </div>
-        </div>
-        
-        <div class="stats-container">
-            <div class="stat-item">
-                <div class="stat-number">6,069</div>
-                <div class="stat-label">New job poster</div>
+            
+            <div class="application-box">
+                <div class="application-title">APPLICATION</div>
+                <div class="application-text">
+                    More than models<br>
+                    The world's number of different types of events and the time to work is covered with a variety of new experiences.
+                </div>
+                <div class="application-text">
+                    The world's best talent and passion that lives in
+                </div>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">24,661</div>
-                <div class="stat-label">Models and artists</div>
+            
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div class="stat-number">6,069</div>
+                    <div class="stat-label">New job poster</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">24,661</div>
+                    <div class="stat-label">Models and artists</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">184,918</div>
+                    <div class="stat-label">Producers and directors</div>
+                </div>
             </div>
-            <div class="stat-item">
-                <div class="stat-number">184,918</div>
-                <div class="stat-label">Producers and directors</div>
-            </div>
-        </div>
-        
-        <div class="trusted-brands">
-            <div class="brands-title">Brands that trust us</div>
-            <div class="brands-logos">
-                <div class="brand-box">THE NORTH FACE</div>
-                <div class="brand-box">GARNIER</div>
+            
+            <div class="brands-section">
+                <div class="brands-title">Brands that trust us</div>
+                <div class="brands-logos">
+                    <div class="brand-logo brand-placeholder-1">THE NORTH FACE</div>
+                    <div class="brand-logo brand-placeholder-2">GARNIER</div>
+                </div>
             </div>
         </div>
     </div>
     
     <!-- PAGE 2 -->
     <div class="page">
-        <div class="nav-container">
-            <div class="nav-item">Vendicayee</div>
-            <div class="nav-item">WOMEN</div>
-            <div class="nav-item">HIGH</div>
-            <div class="nav-item">NEW FACES</div>
-            <div class="nav-item">CURVED</div>
-            <div class="nav-item">TWINS</div>
-            <div class="nav-item">BECOME A MODEL</div>
-            <div class="nav-item">NEWS</div>
-            <div class="nav-item">CONTACT</div>
-            <div class="nav-item">Q</div>
-        </div>
-        
-        <div class="what-we-do-title">WHAT WE DO</div>
-        
-        <div class="service-item">
-            <div class="service-title">Match Making</div>
-            <div class="service-description">
-                A professional matchmaking service is a personalized dating service that connects clients with potential partners through a curated, human-driven process rather than a dating app algorithm. They typically involve in-depth consultation and assessment to understand a client's preferences, and then matchmakers use their own networks and databases to find out potential matches. Benefits include a discreet and personalized experience, and some services also offer coaching or dating advice.
+        <div class="page2-content">
+            <div class="navigation-bar">
+                <div class="nav-item">Vendicayee</div>
+                <div class="nav-item">WOMEN</div>
+                <div class="nav-item">HIGH</div>
+                <div class="nav-item">NEW FACES</div>
+                <div class="nav-item">CURVED</div>
+                <div class="nav-item">TWINS</div>
+                <div class="nav-item">BECOME A MODEL</div>
+                <div class="nav-item">NEWS</div>
+                <div class="nav-item">CONTACT</div>
+                <div class="nav-item">Q</div>
             </div>
-        </div>
-        
-        <div class="service-item">
-            <div class="service-title">Content modeling agencies</div>
-            <div class="service-description">
-                can refer to two different types of businesses: model and talent agencies that manage models and create for content creation; or digital content agencies that specialise in planning and servicing digital content; and all agencies manage talent for physical and digital content like advertisements, photo shoots, and social media campaigns.
-            </div>
-        </div>
-        
-        <div class="service-item">
-            <div class="service-title">The girlfriend experience,</div>
-            <div class="service-description">
-                often provided through an escort agency, is a popular service that involves more personal interaction than a traditional call girl offers. There is a focus on not just having sex, but also having more of a comprehensive experience.
-            </div>
-        </div>
-        
-        <div class="service-item">
-            <div class="service-title">Sugar dating agencies</div>
-            <div class="service-description">
-                are online platforms (websites and apps) that facilitate a transactional dating practice where a wealthier, typically older, individual provides financial assistance and gifts to support a "sugar baby". This is a mutually beneficial relationship that is largely an online phenomenon and has grown in visibility since the 2000s.
-            </div>
-        </div>
-        
-        <div class="service-item">
-            <div class="service-title">Traditional modeling agencies</div>
-            <div class="service-description">
-                act as intermediaries between models and clients, handling job bookings, contract negotiations, and career guidance in exchange for a commission. They find and develop talent by scouting for new faces and managing the careers of their models through various tasks like building portfolios and practicing skills. Some agencies have specific requirements like height for fashion models, but they also represent models for commercial work, which can be more inclusive.
-            </div>
-        </div>
-        
-        <div class="stats-container page-2-stats">
-            <div class="stat-item">
-                <div class="stat-number">6,069</div>
-                <div class="stat-label">NEW JOB POSTER</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">241,661</div>
-                <div class="stat-label">MODELS AND ARTISTS</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">184,918</div>
-                <div class="stat-label">PRODUCERS AND DIRECTORS</div>
-            </div>
-        </div>
-        
-        <div class="trusted-brands">
-            <div class="brands-title">Brands that trust us</div>
-            <div class="brands-logos">
-                <div class="brand-box">THE NORTH FACE</div>
-                <div class="brand-box">GARNIER</div>
-            </div>
-        </div>
-        
-        <div class="footer-section">
-            <div class="footer-columns">
-                <div class="footer-column">
-                    <div class="footer-title">Company</div>
-                    <ul class="footer-links">
-                        <li>About us</li>
-                        <li>Testimonials</li>
-                        <li>Success Stories</li>
-                        <li>Company details</li>
-                        <li>Podcast</li>
-                        <li>Blog</li>
-                    </ul>
+            
+            <h2 class="what-we-do-title">WHAT WE DO</h2>
+            
+            <div class="service-container">
+                <div class="service-title">Match Making</div>
+                <div class="service-description">
+                    A professional matchmaking service is a personalized dating service that connects clients with potential partners through a curated, human-driven process rather than a dating app algorithm. They typically involve in-depth consultation and assessment to understand a client's preferences, and then matchmakers use their own networks and databases to find out potential matches. Benefits include a discreet and personalized experience, and some services also offer coaching or dating advice.
                 </div>
-                
-                <div class="footer-column">
-                    <div class="footer-title">Privacy</div>
-                    <ul class="footer-links">
-                        <li>Privacy policy</li>
-                        <li>Terms of use</li>
-                    </ul>
+            </div>
+            
+            <div class="service-container">
+                <div class="service-title">Content modeling agencies</div>
+                <div class="service-description">
+                    can refer to two different types of businesses: model and talent agencies that manage models and create for content creation; or digital content agencies that specialise in planning and servicing digital content; and all agencies manage talent for physical and digital content like advertisements, photo shoots, and social media campaigns.
                 </div>
-                
-                <div class="footer-column">
-                    <div class="footer-title">Help</div>
-                    <ul class="footer-links">
-                        <li>Safety and trust</li>
-                        <li>How it works</li>
-                        <li>Modeling advice</li>
-                        <li>Contact us</li>
-                    </ul>
+            </div>
+            
+            <div class="service-container">
+                <div class="service-title">The girlfriend experience,</div>
+                <div class="service-description">
+                    often provided through an escort agency, is a popular service that involves more personal interaction than a traditional call girl offers. There is a focus on not just having sex, but also having more of a comprehensive experience.
                 </div>
-                
-                <div class="footer-column">
-                    <div class="footer-title">Download our App</div>
-                    <ul class="footer-links">
-                        <li>iOS</li>
-                        <li>Android</li>
-                    </ul>
+            </div>
+            
+            <div class="service-container">
+                <div class="service-title">Sugar dating agencies</div>
+                <div class="service-description">
+                    are online platforms (websites and apps) that facilitate a transactional dating practice where a wealthier, typically older, individual provides financial assistance and gifts to support a "sugar baby". This is a mutually beneficial relationship that is largely an online phenomenon and has grown in visibility since the 2000s.
+                </div>
+            </div>
+            
+            <div class="service-container">
+                <div class="service-title">Traditional modeling agencies</div>
+                <div class="service-description">
+                    act as intermediaries between models and clients, handling job bookings, contract negotiations, and career guidance in exchange for a commission. They find and develop talent by scouting for new faces and managing the careers of their models through various tasks like building portfolios and practicing skills. Some agencies have specific requirements like height for fashion models, but they also represent models for commercial work, which can be more inclusive.
+                </div>
+            </div>
+            
+            <div class="stats-container page2-stats">
+                <div class="stat-box">
+                    <div class="stat-number">6,069</div>
+                    <div class="stat-label">NEW JOB POSTER</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">241,661</div>
+                    <div class="stat-label">MODELS AND ARTISTS</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">184,918</div>
+                    <div class="stat-label">PRODUCERS AND DIRECTORS</div>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h3>Company</h3>
+                        <ul>
+                            <li>About us</li>
+                            <li>Testimonials</li>
+                            <li>Success Stories</li>
+                            <li>Company details</li>
+                            <li>Podcast</li>
+                            <li>Blog</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Privacy</h3>
+                        <ul>
+                            <li>Privacy policy</li>
+                            <li>Terms of use</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Help</h3>
+                        <ul>
+                            <li>Safety and trust</li>
+                            <li>How it works</li>
+                            <li>Modeling advice</li>
+                            <li>Contact us</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h3>Download our App</h3>
+                        <ul>
+                            <li>iOS</li>
+                            <li>Android</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- PAGE 3 - EMPTY -->
-    <div class="page page-3">
-        <div class="empty-page-text">[This page intentionally left blank]</div>
+    <!-- PAGE 3 - WITH MODEL IMAGES -->
+    <div class="page">
+        <div class="page3-content">
+            <h2 class="page-title">OUR TOP MODELS</h2>
+            
+            <div class="models-grid">
+                <div class="model-card">
+                    <div class="model-image model-img-1">MODEL IMAGE 1</div>
+                    <div class="model-info">
+                        <div class="model-name">ISABELLA</div>
+                        <div class="model-category">Fashion Model</div>
+                    </div>
+                </div>
+                
+                <div class="model-card">
+                    <div class="model-image model-img-2">MODEL IMAGE 2</div>
+                    <div class="model-info">
+                        <div class="model-name>CHLOE</div>
+                        <div class="model-category">Commercial Model</div>
+                    </div>
+                </div>
+                
+                <div class="model-card">
+                    <div class="model-image model-img-3">MODEL IMAGE 3</div>
+                    <div class="model-info">
+                        <div class="model-name">SOPHIA</div>
+                        <div class="model-category">Runway Model</div>
+                    </div>
+                </div>
+                
+                <div class="model-card">
+                    <div class="model-image model-img-4">MODEL IMAGE 4</div>
+                    <div class="model-info">
+                        <div class="model-name">EMMA</div>
+                        <div class="model-category">Fitness Model</div>
+                    </div>
+                </div>
+                
+                <div class="model-card">
+                    <div class="model-image model-img-5">MODEL IMAGE 5</div>
+                    <div class="model-info">
+                        <div class="model-name">AVA</div>
+                        <div class="model-category">Plus-Size Model</div>
+                    </div>
+                </div>
+                
+                <div class="model-card">
+                    <div class="model-image model-img-6">MODEL IMAGE 6</div>
+                    <div class="model-info">
+                        <div class="model-name">MIA</div>
+                        <div class="model-category">Glamour Model</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="position: absolute; bottom: 30mm; left: 25mm; right: 25mm;">
+                <div class="brands-title">More Brands We Work With</div>
+                <div style="display: flex; justify-content: space-between; margin-top: 10mm;">
+                    <div class="brand-logo img-placeholder" style="width: 40mm;">NIKE</div>
+                    <div class="brand-logo img-placeholder" style="width: 40mm;">ADIDAS</div>
+                    <div class="brand-logo img-placeholder" style="width: 40mm;">ZARA</div>
+                    <div class="brand-logo img-placeholder" style="width: 40mm;">H&M</div>
+                </div>
+            </div>
+        </div>
     </div>
     
     <!-- PAGE 4 -->
     <div class="page">
-        <div class="page-4-header">
-            <div class="page-4-title">Create your account to get started</div>
-        </div>
-        
-        <div class="form-container">
-            <div class="form-row">
-                <div class="form-label">Email*</div>
-                <input type="text" class="form-input" placeholder="Enter your email">
+        <div class="page4-content">
+            <h2 class="form-title">Create your account to get started</h2>
+            
+            <div class="form-grid">
+                <div class="form-group">
+                    <label class="form-label">Email*</label>
+                    <input type="email" class="form-input" placeholder="Enter your email">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Password*</label>
+                    <input type="password" class="form-input" placeholder="Enter your password">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">First Name*</label>
+                    <input type="text" class="form-input" placeholder="First Name">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Last Name*</label>
+                    <input type="text" class="form-input" placeholder="Last Name">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Country</label>
+                    <input type="text" class="form-input" value="United States">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Portal Code</label>
+                    <input type="text" class="form-input" placeholder="Portal Code">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Recruiter</label>
+                    <input type="text" class="form-input" placeholder="Recruiter">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Professional</label>
+                    <input type="text" class="form-input" placeholder="Professional">
+                </div>
             </div>
             
-            <div class="form-row">
-                <div class="form-label">Password*</div>
-                <input type="text" class="form-input" placeholder="Enter your password">
-            </div>
-            
-            <div class="form-row">
-                <div class="form-label">First Name*</div>
-                <input type="text" class="form-input" placeholder="First Name">
-            </div>
-            
-            <div class="form-row">
-                <div class="form-label">Last Name*</div>
-                <input type="text" class="form-input" placeholder="Last Name">
-            </div>
-            
-            <div class="form-row">
-                <div class="form-label">Country</div>
-                <input type="text" class="form-input" value="United States">
-            </div>
-            
-            <div class="form-row">
-                <div class="form-label">Portal Code</div>
-                <input type="text" class="form-input" placeholder="Portal Code">
-            </div>
-            
-            <div class="form-row">
-                <div class="form-label">Recruiter</div>
-                <input type="text" class="form-input" placeholder="Recruiter">
-            </div>
-            
-            <div class="form-row">
-                <div class="form-label">Professional</div>
-                <input type="text" class="form-input" placeholder="Professional">
-            </div>
-            
-            <div class="checkbox-group">
+            <div class="checkbox-container">
                 <div class="checkbox-item">
                     <input type="checkbox">
                     <span>I have read and agree to the Terms of Use and Privacy Policy</span>
@@ -615,61 +751,89 @@
                     <span>I am currently at least 16 years old. How do I sign my child up for Emin?</span>
                 </div>
             </div>
-        </div>
-        
-        <div class="search-section">
-            <div class="search-title">Search</div>
-            <div class="search-title">Summary</div>
             
-            <table class="summary-table">
-                <tr>
-                    <td class="table-header">Company</td>
-                    <td class="table-header">Privacy</td>
-                    <td class="table-header">Help</td>
-                    <td class="table-header">Download our App</td>
-                </tr>
-                <tr>
-                    <td>About us</td>
-                    <td>Privacy policy</td>
-                    <td>Safety and trust</td>
-                    <td>iOS</td>
-                </tr>
-                <tr>
-                    <td>Testimonials</td>
-                    <td>Terms of use</td>
-                    <td>How it works</td>
-                    <td>Android</td>
-                </tr>
-                <tr>
-                    <td>Success Stories</td>
-                    <td></td>
-                    <td>Modeling advice</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Company details</td>
-                    <td></td>
-                    <td>Contact us</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Podcast</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Blog</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </table>
+            <div class="summary-section">
+                <div class="summary-title">Search</div>
+                <div class="summary-title">Summary</div>
+                
+                <table class="summary-table">
+                    <tr>
+                        <td class="table-header">Company</td>
+                        <td class="table-header">Privacy</td>
+                        <td class="table-header">Help</td>
+                        <td class="table-header">Download our App</td>
+                    </tr>
+                    <tr>
+                        <td>About us</td>
+                        <td>Privacy policy</td>
+                        <td>Safety and trust</td>
+                        <td>iOS</td>
+                    </tr>
+                    <tr>
+                        <td>Testimonials</td>
+                        <td>Terms of use</td>
+                        <td>How it works</td>
+                        <td>Android</td>
+                    </tr>
+                    <tr>
+                        <td>Success Stories</td>
+                        <td></td>
+                        <td>Modeling advice</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Company details</td>
+                        <td></td>
+                        <td>Contact us</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Podcast</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Blog</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div style="position: absolute; bottom: 20mm; left: 30mm; right: 30mm; text-align: center; font-size: 10pt; color: #777;">
+                © 2023 VeronicaVee. All rights reserved. | maketokas@maketokas.com | https://maketokas.com
+            </div>
         </div>
     </div>
 
-    <div class="no-print" style="text-align: center; padding: 20px; color: #666; font-size: 12px;">
-        This layout is designed to match the PDF exactly. For best results, use "Print" (Ctrl+P) or "Print Preview" to see the exact page layout.
-    </div>
+    <script>
+        // Image placeholders - in a real scenario, these would be actual image URLs
+        const imageData = {
+            model1: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=500",
+            model2: "https://images.unsplash.com/photo-1494790108755-2616b786d4d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=500",
+            model3: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=500",
+            model4: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=500",
+            model5: "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=500",
+            model6: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=500",
+            brand1: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/The_North_Face_logo.svg/1200px-The_North_Face_logo.svg.png",
+            brand2: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Garnier_logo.svg/2560px-Garnier_logo.svg.png",
+            brand3: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_NIKE.svg/1200px-Logo_NIKE.svg.png",
+            brand4: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Adidas_Logo.svg/2560px-Adidas_Logo.svg.png",
+            brand5: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Zara_Logo.svg/2560px-Zara_Logo.svg.png",
+            brand6: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H%26M-Logo.svg/2560px-H%26M-Logo.svg.png"
+        };
+        
+        // Function to replace placeholder with actual images
+        function loadImages() {
+            // In a real implementation, you would set the src attribute of img tags
+            console.log("Image data available for:", Object.keys(imageData));
+            console.log("To use actual images, replace placeholder divs with <img> tags and set src to the URLs above.");
+        }
+        
+        // Uncomment the line below to load images
+        // loadImages();
+    </script>
 </body>
 </html>
